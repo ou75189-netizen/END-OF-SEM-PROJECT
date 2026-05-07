@@ -45,33 +45,33 @@ Download as PDF
 
     Structure
     
-1. 🏠 Dashboard
+1.     Dashboard
 Overview of created documents
 Quick actions (Create Invoice / Receipt / Proforma)
 
-2. 🧾 Create Invoice Page
+2.     🧾 Create Invoice Page
 Client details (Name, Contact, Address)
 Item table
 VAT toggle
 Discount field
 Live total calculation
 
-3. 📄 Proforma Invoice Page
+3.     📄 Proforma Invoice Page
 Similar to invoice
 Marked clearly as “Proforma”
 No payment confirmation
 
-4. 💵 Receipt Page
+4.     💵 Receipt Page
 Payment confirmation
 Reference to invoice number
 Payment method (Cash, Mobile Money, Bank)
 
-5. 📁 Document History Page
+5.     📁 Document History Page
 List of all generated documents
 Filter by type (Invoice, Receipt, Proforma)
 View / Download options
 
-6. ⚙️ Settings Page
+6.     ⚙️ Settings Page
 Company details:
 Name: Northwest Interiors
 Logo upload
@@ -79,7 +79,7 @@ Address
 TIN number
 Default VAT settings
 
-7. 🧱 System Structure (Frontend Logic)
+7.     🧱 System Structure (Frontend Logic)
 Components:
 Header / Navigation
 Form Section
@@ -87,7 +87,7 @@ Item Table Component
 Calculation Engine (JavaScript)
 Preview Panel
 
-8. 🧪 Sample Calculation Logic
+8.     🧪 Sample Calculation Logic
 Subtotal = Σ (Qty × Unit Price)
 Discount Applied
 VAT = 18% of (Subtotal - Discount)
