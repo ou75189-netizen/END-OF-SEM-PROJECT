@@ -1,0 +1,29 @@
+body{
+  background:#f8fafc;
+}
+
+.card{
+  transition:0.3s ease;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+button,
+.btn{
+  transition:0.3s ease;
+}
+
+button:hover,
+.btn:hover{
+  opacity:0.9;
+  transform:scale(1.02);
+}
+
+input:focus,
+textarea:focus{
+  outline:none;
+  border:1px solid #2563eb;
+  box-shadow:0 0 5px rgba(37,99,235,0.3);
+}
