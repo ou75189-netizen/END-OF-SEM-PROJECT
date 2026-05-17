@@ -53,3 +53,16 @@ function removeItem(button){
 }
 
 addItem();
+let editingInvoice =
+  JSON.parse(localStorage.getItem("editingInvoice"));
+
+if(editingInvoice){
+
+  document.getElementById("clientName")
+  .value = editingInvoice.client;
+
+  document.getElementById("invoiceNumber")
+  .innerText = editingInvoice.invoiceNo;
+
+  localStorage.removeItem("editingInvoice");
+}
