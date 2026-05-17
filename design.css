@@ -1,0 +1,41 @@
+body {
+  font-family: Arial;
+  padding: 20px;
+}
+
+.nav a {
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  background: black;
+  color: white;
+}
+
+.company {
+  text-align: center;
+}
+
+.logo {
+  width: 80px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  table thead {
+    display: none;
+  }
+
+  tr, td {
+    display: block;
+    width: 100%;
+  }
+}
