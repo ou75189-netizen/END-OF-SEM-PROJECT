@@ -1,18 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <title>Northwest Interiors Dashboard</title>
+
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
+
 <body>
 
-<h1>Northwest Interiors</h1>
+<div class="sidebar">
 
-<div class="nav">
-  <a href="invoice.html">Create Invoice</a>
-  <a href="proforma.html">Create Proforma</a>
-  <a href="receipt.html">Create Receipt</a>
-  <a href="history.html">View Documents</a>
+  <div class="logo-section">
+    <img src="assets/logo.png">
+    <h2>Northwest Interiors</h2>
+  </div>
+
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="pages/invoice.html">Invoices</a>
+    <a href="pages/proforma.html">Proformas</a>
+    <a href="pages/receipt.html">Receipts</a>
+    <a href="pages/history.html">History</a>
+    <a href="pages/settings.html">Settings</a>
+  </nav>
+
+</div>
+
+<div class="main-content">
+
+  <header>
+    <h1>Dashboard</h1>
+  </header>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Total Revenue</h3>
+      <p>UGX 14,500,000</p>
+    </div>
+
+    <div class="card">
+      <h3>Invoices</h3>
+      <p>26</p>
+    </div>
+
+    <div class="card">
+      <h3>Receipts</h3>
+      <p>18</p>
+    </div>
+
+    <div class="card">
+      <h3>Pending</h3>
+      <p>UGX 3,200,000</p>
+    </div>
+
+  </div>
+
+  <div class="quick-actions">
+
+    <a href="pages/invoice.html" class="btn">
+      Create Invoice
+    </a>
+
+    <a href="pages/proforma.html" class="btn">
+      Create Proforma
+    </a>
+
+    <a href="pages/receipt.html" class="btn">
+      Create Receipt
+    </a>
+
+  </div>
+
 </div>
 
 </body>
