@@ -1,89 +1,36 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial;
-}
+function calculateTotals(){
 
-body{
-  display:flex;
-  background:#f4f6f9;
-}
+  let rows = document.querySelectorAll(".item-row");
 
-.sidebar{
-  width:250px;
-  height:100vh;
-  background:#0f172a;
-  color:white;
-  padding:20px;
-}
+  let subtotal = 0;
 
-.logo-section{
-  text-align:center;
-  margin-bottom:40px;
-}
+  rows.forEach(row=>{
 
-.logo-section img{
-  width:80px;
-}
+    let qty = parseFloat(row.querySelector(".qty").value)||0;
+    let rate = parseFloat(row.querySelector(".rate").value)||0;
 
-.sidebar nav{
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-}
+    let total = qty * rate;
 
-.sidebar nav a{
-  text-decoration:none;
-  color:white;
-  padding:12px;
-  border-radius:8px;
-  transition:0.3s;
-}
+    row.querySelector(".row-total").innerText = total.toFixed(2);
 
-.sidebar nav a:hover{
-  background:#1e293b;
-}
+    subtotal += total;
+  });
 
-.main-content{
-  flex:1;
-  padding:30px;
-}
+  let discount =
+    parseFloat(document.getElementById("discount").value)||0;
 
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-  margin-top:30px;
-}
+  let taxable = subtotal - discount;
 
-.card{
-  background:white;
-  padding:25px;
-  border-radius:15px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.08);
-}
+  let vat = taxable * 0.18;
 
-.card h3{
-  margin-bottom:10px;
-  color:#64748b;
-}
+  let finalTotal = taxable + vat;
 
-.card p{
-  font-size:24px;
-  font-weight:bold;
-}
+  document.getElementById("subtotal").innerText =
+    subtotal.toFixed(2);
 
-.quick-actions{
-  margin-top:40px;
-  display:flex;
-  gap:20px;
-}
+  document.getElementById("vat").innerText =
+    vat.toFixed(2);
 
-.btn{
-  background:#2563eb;
-  color:white;
-  padding:14px 20px;
-  border-radius:10px;
-  text-decoration:none;
+  document.getElementById("grandTotal").innerText =
+    finalTotal.toFixed(2);
 }
