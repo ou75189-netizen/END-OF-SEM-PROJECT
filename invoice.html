@@ -1,47 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Invoice</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <title>Create Invoice</title>
+
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/invoice.css">
+  <link rel="stylesheet" href="../css/responsive.css">
 </head>
+
 <body>
 
-<div class="company">
-  <img src="assets/logo.png" class="logo">
-  <h2>Northwest Interiors</h2>
-  <p>TIN: 751385271</p>
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+  <div class="logo-section">
+    <img src="../assets/logo.png">
+    <h2>Northwest Interiors</h2>
+  </div>
+
+  <nav>
+    <a href="../index.html">Dashboard</a>
+    <a href="invoice.html">Invoices</a>
+    <a href="proforma.html">Proformas</a>
+    <a href="receipt.html">Receipts</a>
+    <a href="history.html">History</a>
+  </nav>
+
 </div>
 
-<p>Invoice No: <span id="invoiceNo"></span></p>
+<!-- MAIN CONTENT -->
 
-<input type="text" id="client" placeholder="Client Name">
+<div class="main-content">
 
-<table id="items">
-<thead>
-<tr>
-  <th>Description</th>
-  <th>Quantity</th>
-  <th>Price</th>
-  <th>Total</th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
+  <div class="invoice-header">
 
-<button onclick="addItem()">Add Item</button>
+    <div>
+      <h1>Create Invoice</h1>
+      <p id="invoiceNumber"></p>
+    </div>
 
-<input type="number" id="discount" value="0" oninput="calculate()">
+    <div class="company-info">
+      <h3>Northwest Interiors</h3>
+      <p>TIN: 1004567891</p>
+      <p>Kampala, Uganda</p>
+    </div>
 
-<p>Sub-Total: <span id="subtotal">0</span></p>
-<p>VAT (18%): <span id="vat">0</span></p>
-<p>Total: <span id="total">0</span></p>
+  </div>
 
-<button onclick="saveDocument('invoice')">Save</button>
-<button onclick="downloadPDF()">Download PDF</button>
+  <!-- CLIENT DETAILS -->
+
+  <div class="invoice-top">
+
+    <div class="client-box">
+
+      <h3>Client Details</h3>
+
+      <input type="text" id="clientName"
+        placeholder="Client Name">
+
+      <input type="text" id="clientPhone"
+        placeholder="Phone Number">
+
+      <textarea id="clientAddress"
+        placeholder="Address"></textarea>
+
+    </div>
+
+    <!-- SUMMARY -->
+
+    <div class="summary-box">
+
+      <h3>Invoice Summary</h3>
+
+      <div class="summary-item">
+        <span>Subtotal</span>
+        <span id="subtotal">0</span>
+      </div>
+
+      <div class="summary-item">
+        <span>Discount</span>
+        <span id="discountDisplay">0</span>
+      </div>
+
+      <div class="summary-item">
+        <span>VAT (18%)</span>
+        <span id="vat">0</span>
+      </div>
+
+      <div class="summary-item total">
+        <span>Total</span>
+        <span id="grandTotal">0</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ITEMS TABLE -->
+
+  <div class="table-container">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Qty</th>
+          <th>Rate</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody id="invoiceItems"></tbody>
+
+    </table>
+
+    <button class="add-btn" onclick="addItem()">
+      + Add Item
+    </button>
+
+  </div>
+
+  <!-- DISCOUNT -->
+
+  <div class="discount-section">
+
+    <label>Discount Amount</label>
+
+    <input type="number"
+      id="discount"
+      value="0"
+      oninput="calculateTotals()">
+
+  </div>
+
+  <!-- ACTIONS -->
+
+  <div class="action-buttons">
+
+    <button onclick="saveInvoice()">
+      Save Invoice
+    </button>
+
+    <button onclick="downloadPDF()">
+      Download PDF
+    </button>
+
+    <button onclick="window.print()">
+      Print
+    </button>
+
+  </div>
+
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="js/app.js"></script>
-<script src="js/invoice.js"></script>
+
+<script src="../js/calculations.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/pdf.js"></script>
+<script src="../js/invoice.js"></script>
 
 </body>
 </html>
