@@ -1,0 +1,43 @@
+@media(max-width:900px){
+
+  .sidebar{
+    width:80px;
+  }
+
+  .sidebar h2,
+  .sidebar nav a{
+    font-size:12px;
+  }
+
+  .invoice-top{
+    grid-template-columns:1fr;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .action-buttons{
+    flex-direction:column;
+  }
+}
+
+@media(max-width:600px){
+
+  body{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+    height:auto;
+  }
+
+  table{
+    font-size:12px;
+  }
+
+  .main-content{
+    padding:15px;
+  }
+}
