@@ -1,48 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Receipt</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+<div class="receipt-card">
 
-<div class="company">
-  <img src="assets/logo.png" class="logo">
-  <h2>Northwest Interiors</h2>
-  <p>TIN: 123456789</p>
+  <h1>Create Receipt</h1>
+
+  <input type="text"
+  placeholder="Client Name">
+
+  <input type="text"
+  placeholder="Invoice Reference">
+
+  <input type="number"
+  placeholder="Amount Paid">
+
+  <select>
+
+    <option>Cash</option>
+
+    <option>Mobile Money</option>
+
+    <option>Bank Transfer</option>
+
+  </select>
+
+  <button>
+    Save Receipt
+  </button>
+
 </div>
-
-<p>Receipt No: <span id="receiptNo"></span></p>
-
-<input type="text" id="client" placeholder="Client Name">
-<input type="number" id="amount" placeholder="Amount Paid">
-
-<select id="method">
-  <option>Cash</option>
-  <option>Mobile Money</option>
-  <option>Bank</option>
-</select>
-
-<button onclick="saveReceipt()">Save</button>
-
-<script src="js/app.js"></script>
-<script>
-document.getElementById("receiptNo").innerText = generateInvoiceNumber("REC");
-
-function saveReceipt(){
-  let docs = JSON.parse(localStorage.getItem("docs")) || [];
-
-  docs.push({
-    type: "receipt",
-    client: document.getElementById("client").value,
-    total: document.getElementById("amount").value
-  });
-
-  localStorage.setItem("docs", JSON.stringify(docs));
-  alert("Saved");
-}
-</script>
-
-</body>
-</html>
- 
