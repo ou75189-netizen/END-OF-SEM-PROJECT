@@ -1,98 +1,89 @@
-function generateInvoiceNumber(prefix) {
-  let count = localStorage.getItem("docCount") || 0;
-  count++;
-
-  localStorage.setItem("docCount", count);
-
-  return `${prefix}-${Date.now()}-${count}`;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
 }
 
-function addItem() {
-  let table = document.querySelector("#items tbody");
-  let row = table.insertRow();
-
-  row.innerHTML = `
-    <td><input></td>
-    <td><input type="number" value="1" oninput="calculate()"></td>
-    <td><input type="number" value="0" oninput="calculate()"></td>
-    <td class="total">0</td>
-  `;
+body{
+  display:flex;
+  background:#f4f6f9;
 }
 
-function calculate() {
-  let rows = document.querySelectorAll("#items tbody tr");
-  let subtotal = 0;
-
-  rows.forEach(row => {
-    let qty = row.cells[1].querySelector("input").value;
-    let price = row.cells[2].querySelector("input").value;
-
-    let total = qty * price;
-    row.cells[3].innerText = total;
-
-    subtotal += total;
-  });
-
-  let discount = document.getElementById("discount").value || 0;
-  let afterDiscount = subtotal - discount;
-
-  let vat = afterDiscount * 0.18;
-  let final = afterDiscount + vat;
-
-  document.getElementById("subtotal").innerText = subtotal;
-  document.getElementById("vat").innerText = vat.toFixed(2);
-  document.getElementById("total").innerText = final.toFixed(2);
+.sidebar{
+  width:250px;
+  height:100vh;
+  background:#0f172a;
+  color:white;
+  padding:20px;
 }
 
-function saveDocument(type) {
-  let docs = JSON.parse(localStorage.getItem("docs")) || [];
-
-  docs.push({
-    type,
-    client: document.getElementById("client").value,
-    total: document.getElementById("total").innerText
-  });
-
-  localStorage.setItem("docs", JSON.stringify(docs));
-  alert("Saved");
+.logo-section{
+  text-align:center;
+  margin-bottom:40px;
 }
 
-function downloadPDF() {
-  const { jsPDF } = window.jspdf;
-  let doc = new jsPDF();
-
-  doc.text("Northwest Interiors", 20, 20);
-  doc.text("TIN: 123456789", 20, 30);
-  doc.text("Client: " + document.getElementById("client").value, 20, 40);
-  doc.text("Total: UGX " + document.getElementById("total").innerText, 20, 50);
-
-  doc.save("document.pdf");
+.logo-section img{
+  width:80px;
 }
 
-document.getElementById("invoiceNo").innerText = generateInvoiceNumber("INV");
-
-let data = JSON.parse(localStorage.getItem("docs")) || [];
-let list = document.getElementById("historyList");
-
-function render() {
-  list.innerHTML = "";
-
-  data.forEach((doc, index) => {
-    let li = document.createElement("li");
-
-    li.innerHTML = `
-      ${doc.type} - ${doc.client} - ${doc.total}
-      <button onclick="deleteDoc(${index})">Delete</button>
-    `;
-
-    list.appendChild(li);
-  });
+.sidebar nav{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
 }
 
-function deleteDoc(index) {
-  data.splice(index, 1);
-  localStorage.setItem("docs", JSON.stringify(data));
-  render();
+.sidebar nav a{
+  text-decoration:none;
+  color:white;
+  padding:12px;
+  border-radius:8px;
+  transition:0.3s;
 }
 
-render();
+.sidebar nav a:hover{
+  background:#1e293b;
+}
+
+.main-content{
+  flex:1;
+  padding:30px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-top:30px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.card h3{
+  margin-bottom:10px;
+  color:#64748b;
+}
+
+.card p{
+  font-size:24px;
+  font-weight:bold;
+}
+
+.quick-actions{
+  margin-top:40px;
+  display:flex;
+  gap:20px;
+}
+
+.btn{
+  background:#2563eb;
+  color:white;
+  padding:14px 20px;
+  border-radius:10px;
+  text-decoration:none;
+}
