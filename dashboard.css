@@ -27,3 +27,32 @@ textarea:focus{
   border:1px solid #2563eb;
   box-shadow:0 0 5px rgba(37,99,235,0.3);
 }
+.dark{
+  background:#0f172a;
+  color:white;
+}
+
+.dark .sidebar{
+  background:#020617;
+}
+
+.dark .card{
+  background:#1e293b;
+  color:white;
+}
+
+.dark .main-content{
+  background:#0f172a;
+}
+
+.dark table{
+  background:#1e293b;
+  color:white;
+}
+
+.dark input,
+.dark textarea{
+  background:#334155;
+  color:white;
+  border:none;
+}
