@@ -68,3 +68,31 @@ function downloadPDF() {
 
   doc.save("document.pdf");
 }
+
+document.getElementById("invoiceNo").innerText = generateInvoiceNumber("INV");
+
+let data = JSON.parse(localStorage.getItem("docs")) || [];
+let list = document.getElementById("historyList");
+
+function render() {
+  list.innerHTML = "";
+
+  data.forEach((doc, index) => {
+    let li = document.createElement("li");
+
+    li.innerHTML = `
+      ${doc.type} - ${doc.client} - ${doc.total}
+      <button onclick="deleteDoc(${index})">Delete</button>
+    `;
+
+    list.appendChild(li);
+  });
+}
+
+function deleteDoc(index) {
+  data.splice(index, 1);
+  localStorage.setItem("docs", JSON.stringify(data));
+  render();
+}
+
+render();
