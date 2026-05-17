@@ -65,3 +65,23 @@ function editInvoice(index){
 }
 
 renderInvoices();
+function searchInvoices(){
+
+  let search =
+    document.getElementById("searchInput")
+    .value.toLowerCase();
+
+  let rows =
+    document.querySelectorAll("#historyTable tr");
+
+  rows.forEach(row=>{
+
+    let text =
+      row.innerText.toLowerCase();
+
+    row.style.display =
+      text.includes(search)
+      ? ""
+      : "none";
+  });
+}
